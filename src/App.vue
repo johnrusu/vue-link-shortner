@@ -25,7 +25,15 @@
             <div class="text-lg mb-2">
               {{ LABELS.ERROR_MESSAGE }}
             </div>
-            <div class="text-sm">{{ error.message }}</div>
+            <div class="text-sm">{{ error?.message }}</div>
+            <v-alert
+              icon="mdi-information-outline"
+              :title="LABELS.FIX_AUTH_ISSUE"
+              :text="`${LABELS.REMOVE_STORAGE}
+                      ${LABELS.RELOGIN}`"
+              type="info"
+              class="text-left mt-4"
+            ></v-alert>
           </div>
         </div>
 

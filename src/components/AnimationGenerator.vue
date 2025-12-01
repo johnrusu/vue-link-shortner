@@ -33,7 +33,7 @@ const errorMessage = computed(() =>
     ? errors.invalidJSON?.message
     : errors.missingData?.status
       ? errors.missingData?.message
-      : ""
+      : "",
 );
 
 const setAnimationRefData = (): void => {

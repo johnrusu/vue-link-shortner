@@ -75,6 +75,20 @@ const LABELS = {
   ERROR_CREATING_LINK: "An error occurred while creating the link",
   ABOUT: "About",
   LINK_ANALYTICS: "Analytics Link",
+  FIX_AUTH_ISSUE: "Fix Authentication Issue",
+  REMOVE_STORAGE: "Remove Stored Data.",
+  RELOGIN: "Please log in again to continue.",
+  IMPORT_LINKS: "Import Links",
+  IMPORT_SUCCESS: (count: number) => `Successfully imported ${count} links.`,
+  IMPORT_FAILED: "Failed to import links. Please check logs for details.",
+  INVALID_FILE_TYPE: "Invalid file type. Please upload a JSON file.",
+  IMPORT_LINKS_INSTRUCTIONS:
+    "To import links, upload a JSON file containing an array of link objects with 'url' and optional 'shortCode' properties.",
+};
+
+const ADD_LINK_TABS = {
+  ADD_LINK: "add-link",
+  IMPORT_LINKS: "import-links",
 };
 
 const LINKS_MAPPING = {
@@ -171,4 +185,21 @@ const ABOUT_PAGE = {
   },
 };
 
-export { APP, LABELS, PLACEHOLDER_IMAGE, routes, LINKS_MAPPING, ABOUT_PAGE };
+const EXTENSIONS = {
+  JSON: {
+    DESCRIPTION: "JSON Files",
+    EXTENSION: ".json",
+    MIME_TYPE: "application/json",
+  },
+};
+
+export {
+  APP,
+  LABELS,
+  PLACEHOLDER_IMAGE,
+  routes,
+  LINKS_MAPPING,
+  ABOUT_PAGE,
+  ADD_LINK_TABS,
+  EXTENSIONS,
+};

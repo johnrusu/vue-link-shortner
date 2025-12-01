@@ -15,6 +15,7 @@ const {
   getLinkById,
   getLinkByShortCode,
   createLink,
+  addLinks,
   updateLink,
   deleteLink,
   deleteAll,
@@ -80,6 +81,23 @@ router.post("/api/link", checkJwt, async (req, res) => {
   try {
     const createdLink = await createLink(newLink);
     res.status(201).json(createdLink);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+router.post("/api/links/import", checkJwt, async (req, res) => {
+  const linksData = pathOr([], ["body", "links"], req);
+
+  try {
+    const userId = req.auth?.sub || req.auth?.payload?.sub;
+
+    if (!userId) {
+      return res.status(401).json({ error: "User ID not found in token" });
+    }
+
+    const importedLinks = await addLinks(linksData, userId);
+    res.status(201).json(importedLinks);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

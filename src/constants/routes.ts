@@ -102,6 +102,17 @@ const routes = {
       description: "Delete all links",
       protected: true,
     },
+
+    addLinks: {
+      method: "POST",
+      path: "/api/links/import",
+      url: `${BASE_URL}/api/links/import`,
+      description: "Import multiple links",
+      protected: true,
+      body: {
+        links: "array of link objects (required)",
+      },
+    },
   },
 } as const;
 

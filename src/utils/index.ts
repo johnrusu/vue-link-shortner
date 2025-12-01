@@ -325,7 +325,7 @@ const isObject = (data: object | string) =>
  * @param jsonString
  * @returns
  */
-export const validateJson = (json: object | string): object | false => {
+export const validateJson = (json: object | string): object | null => {
   if (isObject(json)) {
     return json;
   }
@@ -333,6 +333,6 @@ export const validateJson = (json: object | string): object | false => {
     return JSON.parse(json as string);
   } catch (e) {
     console.error("Invalid JSON string:", e);
-    return false;
+    return null;
   }
 };

@@ -24,9 +24,16 @@
           <h1 class="text-4xl font-bold text-center mb-8">
             {{ LABELS.LINKS_TABLE_TITLE }}
           </h1>
-          <AddLinkForm @linkCreated="getLinks" v-if="!isArrayNotEmpty(links)" />
+          <AddLinkForm
+            @linkCreated="getLinks"
+            @linksImported="getLinks"
+            v-if="!isArrayNotEmpty(links)"
+          />
           <v-card :loading="loading" class="w-full" v-else>
             <v-data-table
+              hover
+              class="elevation-0"
+              :items-per-page="10"
               :headers="[
                 ...linksIds.map((id) => ({
                   title: (LINKS_MAPPING as any)[id] || id,
@@ -43,22 +50,26 @@
                 v-if="isArrayNotEmpty(links)"
               >
                 <div class="flex gap-2">
-                  <v-btn
-                    icon
-                    size="small"
-                    color="primary"
-                    @click="viewDetails(item)"
-                  >
-                    <v-icon>mdi-eye</v-icon>
-                  </v-btn>
-                  <v-btn
-                    icon
-                    size="small"
-                    color="error"
-                    @click="deleteLink(item)"
-                  >
-                    <v-icon>mdi-delete</v-icon>
-                  </v-btn>
+                  <v-btn-group variant="outlined" divided density="compact">
+                    <v-btn
+                      icon
+                      color="primary"
+                      @click="viewDetails(item)"
+                      density="comfortable"
+                      size="small"
+                    >
+                      <v-icon>mdi-eye</v-icon>
+                    </v-btn>
+                    <v-btn
+                      icon
+                      color="error"
+                      @click="deleteLink(item)"
+                      density="comfortable"
+                      size="small"
+                    >
+                      <v-icon>mdi-delete</v-icon>
+                    </v-btn>
+                  </v-btn-group>
                 </div>
               </template>
             </v-data-table>
@@ -238,6 +249,6 @@ watch(
       error.value = err as Error;
     }
   },
-  { immediate: true }
+  { immediate: true },
 );
 </script>

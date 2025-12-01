@@ -43,7 +43,7 @@ const linkId = computed(() => route.params.linkId as string);
 const shortUrl = computed(() =>
   link.value
     ? `${window.location.origin}${import.meta.env.BASE_URL}${link.value.shortCode}`
-    : ""
+    : "",
 );
 
 const getLinkDetails = async () => {
@@ -305,8 +305,8 @@ onMounted(() => {
                             Math.floor(
                               (Date.now() -
                                 new Date(link.createdAt).getTime()) /
-                                (1000 * 60 * 60 * 24)
-                            )
+                                (1000 * 60 * 60 * 24),
+                            ),
                           )
                         }}
                       </v-list-item-subtitle>

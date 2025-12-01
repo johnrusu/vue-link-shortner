@@ -6,19 +6,9 @@ import { createApp } from "vue";
 import { createPinia } from "pinia";
 import router from "@/router";
 import { createAuth0 } from "@auth0/auth0-vue";
-import { createVuetify } from "vuetify";
+import vuetify from "@/plugins/vuetify";
 
 import App from "./App.vue";
-
-const vuetify = createVuetify({
-  theme: {
-    defaultTheme: "dark",
-    //
-  },
-  icons: {
-    defaultSet: "mdi",
-  },
-});
 
 const app = createApp(App);
 
@@ -33,7 +23,7 @@ app.use(
     },
     cacheLocation: "localstorage",
     useRefreshTokens: true,
-  })
+  }),
 );
 
 app.use(createPinia());
