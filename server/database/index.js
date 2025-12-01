@@ -44,6 +44,11 @@ const createLink = async (linkData) => {
   return await link.save();
 };
 
+const addLinks = async (linksData, userId) => {
+  const linksWithUserId = linksData.map((link) => ({ ...link, userId }));
+  return await links.insertMany(linksWithUserId, { ordered: false });
+};
+
 const updateLink = async (id, linkData, userId) => {
   if (!userId) {
     throw new Error("User ID is required");
@@ -81,4 +86,5 @@ module.exports = {
   updateLink,
   deleteLink,
   deleteAll,
+  addLinks,
 };
