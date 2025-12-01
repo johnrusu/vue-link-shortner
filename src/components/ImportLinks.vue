@@ -30,7 +30,7 @@ const handleFile = (file: File[] | File) => {
     fileContent.onload = (e) => {
       const content = e.target?.result;
       if (!isNilOrEmpty(content)) {
-        let validJson: object | null = validateJson(content as string);
+        let validJson: object | false = validateJson(content as string);
         if (!isNilOrEmpty(validJson) && validJson) {
           validJson = validJson as object;
           emits("linksImported", validJson);

@@ -12,7 +12,7 @@ export { isEmpty, anyPass, isNil, is };
  */
 export const checkObjectProperty = (
   object: { [key: string]: unknown },
-  property: string,
+  property: string
 ): unknown | undefined => {
   return object && has(property, object) ? object[property] : undefined;
 };
@@ -56,7 +56,7 @@ export const isNilOrEmpty = anyPass([isNil, isEmpty]);
  */
 export const allObjectPropsExists = (
   objModel: object = {},
-  objToCompare: object = {},
+  objToCompare: object = {}
 ): boolean => {
   return (
     is(Object, objModel) &&
@@ -79,7 +79,7 @@ export const randomString = (length?: number): string => {
   const result = [];
   for (let i = 0; i < length; i++) {
     result.push(
-      characters.charAt(Math.floor(Math.random() * charactersLength)),
+      characters.charAt(Math.floor(Math.random() * charactersLength))
     );
   }
   return result.join("");
@@ -132,7 +132,7 @@ export const snakeToCamel = (str: string = ""): string =>
   str
     .toLowerCase()
     .replace(/([-_][a-z])/g, (group) =>
-      group.toUpperCase().replace("-", "").replace("_", ""),
+      group.toUpperCase().replace("-", "").replace("_", "")
     );
 /**
  * Formats a string to be a friendly slugify
@@ -254,7 +254,7 @@ export const isLightColor = (hexColor: string): boolean => {
 };
 
 export const hexToRgb = (
-  hex: string,
+  hex: string
 ): { r: number; g: number; b: number } | null => {
   // Remove the leading '#' if present
   const cleanedHex = hex.replace(/^#/, "");
@@ -278,7 +278,7 @@ export const hexToRgb = (
 
 export const hexToRgba = (
   hex: string,
-  alpha: number,
+  alpha: number
 ): { r: number; g: number; b: number; a: number } | null => {
   const rgb = hexToRgb(hex);
   return rgb ? { ...rgb, a: alpha } : null;
@@ -299,7 +299,7 @@ export const stringToJSON = (str: string): object | false | null => {
  * @returns A promise that resolves with the HTMLImageElement if successful, or null if the source is empty
  */
 export const checkImage = (
-  imageSrc: string = "",
+  imageSrc: string = ""
 ): Promise<HTMLImageElement | null> => {
   if (isNilOrEmpty(imageSrc)) {
     return Promise.resolve(null);
@@ -325,7 +325,7 @@ const isObject = (data: object | string) =>
  * @param jsonString
  * @returns
  */
-export const validateJson = (json: object | string): object | null => {
+export const validateJson = (json: object | string): object | false => {
   if (isObject(json)) {
     return json;
   }
@@ -333,6 +333,6 @@ export const validateJson = (json: object | string): object | null => {
     return JSON.parse(json as string);
   } catch (e) {
     console.error("Invalid JSON string:", e);
-    return null;
+    return false;
   }
 };
