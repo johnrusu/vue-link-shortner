@@ -40,7 +40,7 @@ export const isArrayNotEmpty = (array: unknown[]): boolean =>
  * @returns A promise that resolves with the HTMLImageElement if successful, or null if the source is empty
  */
 export const checkImage = (
-  imageSrc: string = ""
+  imageSrc: string = "",
 ): Promise<HTMLImageElement | null> => {
   if (isNilOrEmpty(imageSrc)) {
     return Promise.resolve(null);

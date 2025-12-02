@@ -43,7 +43,7 @@ const linkId = computed(() => route.params.linkId as string);
 const shortUrl = computed(() =>
   link.value
     ? `${window.location.origin}${import.meta.env.BASE_URL}${link.value.shortCode}`
-    : ""
+    : "",
 );
 
 const getLinkDetails = async () => {

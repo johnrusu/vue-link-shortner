@@ -249,6 +249,6 @@ watch(
       error.value = err as Error;
     }
   },
-  { immediate: true }
+  { immediate: true },
 );
 </script>
