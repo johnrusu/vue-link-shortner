@@ -43,7 +43,7 @@
         >
           <div class="mb-3">
             <img
-              src="/favicons/apple-icon-114x114.png"
+              src="/favicons/logo.png"
               alt="App Icon"
               width="114"
               height="114"
