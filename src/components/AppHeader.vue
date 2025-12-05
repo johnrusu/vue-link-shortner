@@ -8,7 +8,7 @@
           :disabled="isDisabled"
         >
           <img
-            src="/favicons/header.png"
+            src="/favicons/logo.png"
             :alt="APP.TITLE"
             width="32"
             height="32"
